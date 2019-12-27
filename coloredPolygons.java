@@ -2,7 +2,7 @@
 import java.io.*;
 
 
-public class coloredPolygons {
+public class ColoredPolygons {
   private java.util.List<ColoredPolygon> data;
   private String color;
 
