@@ -23,15 +23,14 @@ public class test {
 			java.util.List<String> F = ColoredPolygons.readFile("polyominoesINF421.txt");
 
 			for (String ligne : F) {
-				ColoredPolygon CP = new ColoredPolygon(ligne, new Color(100, 100, 100));
+				ColoredPolygon CP = new ColoredPolygon(ligne, new Color(75, 150, 100));
 				Image.addPolygon(CP);
 			}
 			
 			Image2dViewer view = new Image2dViewer(Image);
 			Image2dComponent viewc = new Image2dComponent (Image);
-			Graphics g=view.getGraphics();
-			viewc.paint(g);
-
+			view.createGraphics();			//à partir de là, Nous ne comprenons pas le formalisme attendu
+			viewc.paint(view.getGraphics());
 		//} catch (Exception e) {
 			// System.out.println("Erreur dans l'implémentation de ColoredPolygon");
 		//}
