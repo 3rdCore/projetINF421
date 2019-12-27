@@ -1,24 +1,35 @@
+import java.awt.*;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.util.ArrayList;
+import java.util.LinkedList;
 
-import java.io.*;
-import java.util.*;
 
 public class ColoredPolygons {
-	private java.util.List<ColoredPolygon> data;
-	private String color;
+	public LinkedList<ColoredPolygon> data;
+	public Color color;
 
-	public ColoredPolygons(String filename, String color) { // constructeur à partir d'un .txt
-		List<String> F = readFile(filename);
+	public ColoredPolygons(String filename, Color color) { // constructeur à partir d'un .txt
+		java.util.List<String> F = readFile(filename);
+
 		for (String ligne : F) {
-			this.data.add(new ColoredPolygon(ligne, color));
+			System.out.println(ligne);
+			ColoredPolygon CP= new ColoredPolygon(ligne, color);
+			System.out.println(CP);
+			this.data.add(CP);
+
 
 		}
 		this.color = color;
 	}
+	public int lenght() {
+		return data.size();
+	}
 
-	private List<String> readFile(String filename) // récupération sous la forme d'une list de String d'un fichier
-													// .txt
+	public static java.util.List<String> readFile(String filename) // récupération sous la forme d'une list de String d'un fichier
+													// .txt ( copié d'Internet )
 	{
-		List<String> records = new ArrayList<String>();
+		java.util.List<String> records = new ArrayList<String>();
 		try {
 			BufferedReader reader = new BufferedReader(new FileReader(filename));
 			String line;

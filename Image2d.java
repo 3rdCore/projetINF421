@@ -16,7 +16,7 @@ public class Image2d {
 		this.width = width;
 		this.height = height;
 		coloredPolygons = Collections.synchronizedList(new LinkedList<ColoredPolygon>());
-		edges = Collections.synchronizedList(new LinkedList<Edge>());
+		edges= Collections.synchronizedList(new LinkedList<Edge>());
 	}
 
 	// Return the width of the image
@@ -42,6 +42,9 @@ public class Image2d {
 	// Create the polygon with xcoords, ycoords and color
 	public void addPolygon(int[] xcoords, int[] ycoords, Color color) {
 		coloredPolygons.add(new ColoredPolygon(xcoords, ycoords, color));
+	}
+	public void addPolygon(ColoredPolygon CP) {
+		coloredPolygons.add(CP);
 	}
 
 	// Create the edge with coordinates x1, y1, x2, y2
