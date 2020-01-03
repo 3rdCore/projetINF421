@@ -16,7 +16,7 @@ public class Image2d {
 		this.width = width;
 		this.height = height;
 		coloredPolygons = Collections.synchronizedList(new LinkedList<ColoredPolygon>());
-		edges= Collections.synchronizedList(new LinkedList<Edge>());
+		edges = Collections.synchronizedList(new LinkedList<Edge>());
 	}
 
 	// Return the width of the image
@@ -43,13 +43,28 @@ public class Image2d {
 	public void addPolygon(int[] xcoords, int[] ycoords, Color color) {
 		coloredPolygons.add(new ColoredPolygon(xcoords, ycoords, color));
 	}
+
 	public void addPolygon(ColoredPolygon CP) {
 		coloredPolygons.add(CP);
+	}
+
+	public void addPolygons(Polyomino P) {
+		this.coloredPolygons = Collections.synchronizedList(P.data);
+	}
+
+	public void addListe(LinkedList<ColoredPolygon> liste) {
+		this.coloredPolygons = Collections.synchronizedList(liste);
 	}
 
 	// Create the edge with coordinates x1, y1, x2, y2
 	public void addEdge(int x1, int y1, int x2, int y2, int width) {
 		edges.add(new Edge(x1, y1, x2, y2, width));
+	}
+
+	public void addEdges(LinkedList<Edge> Edges) {
+		for (Edge e : Edges) {
+			edges.add(e);
+		}
 	}
 
 	// Clear the picture
@@ -75,10 +90,10 @@ class Image2dComponent extends JComponent {
 
 		// set the background color
 		Dimension d = getSize();
-        g2.setBackground(Color.white);
-        g2.clearRect(0,0,d.width,d.height);
+		g2.setBackground(Color.white);
+		g2.clearRect(0, 0, d.width, d.height);
 
-        // draw the polygons
+		// draw the polygons
 		synchronized (img.getColoredPolygons()) {
 			for (ColoredPolygon coloredPolygon : img.getColoredPolygons()) {
 				g2.setColor(coloredPolygon.color);
@@ -91,8 +106,8 @@ class Image2dComponent extends JComponent {
 		g2.setColor(Color.white);
 		synchronized (img.getEdges()) {
 			for (Edge edge : img.getEdges()) {
-                g2.setStroke(new BasicStroke(edge.width));
-                g2.drawLine(edge.x1, edge.y1, edge.x2, edge.y2);
+				g2.setStroke(new BasicStroke(edge.width));
+				g2.drawLine(edge.x1, edge.y1, edge.x2, edge.y2);
 			}
 		}
 	}
