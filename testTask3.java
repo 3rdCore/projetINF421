@@ -132,7 +132,7 @@ public class testTask3 {
 		}
 		img.addListe(dataTotal);
 
-		new Image2dViewer(img);
+		//new Image2dViewer(img);
 	}
 
 }

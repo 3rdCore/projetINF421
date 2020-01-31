@@ -143,7 +143,7 @@ public class covering {
 				
 				for (int[] couple : LP.toList()) {  //On parcours maintenant chaque carré composant le Polyomino LP choisi.
 					MAP[couple[1]][couple[0]] = 0;	// On passe à 0 tout les cases de la map qui sont pavées par ce Polyomino
-					for (Polyomino Poly : Collection) { 	 //On vire tout les polyominos de la collection qui ont une intersection nous nulle avec LP.
+					for (Polyomino Poly : Collection) { 	 //On vire tout les polyominos de la collection qui ont une intersection non nulle avec LP.
 						if (Poly.contains(couple)) {
 							for (int i = 0; i < COLLECTION.size(); ++i) {
 								if (COLLECTION.get(i).egaux(Poly)) {
@@ -200,6 +200,7 @@ public class covering {
 			Ps.add(P2);
 			Ps.add(P3);
 			Ps.add(P4);
+			
 			if (P1.egaux(P2))			
 				Ps.remove(P2);			// c'est un beau bordel y'a peut être moyen de nettoyer tout ca.
 			if (P1.egaux(P3))				

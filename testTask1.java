@@ -24,13 +24,12 @@ public class testTask1 {
 
 			/// ZONE DE TEST DE FONCTIONS ////
 			
-			System.out.println("["+P.data.getFirst().polygon.xpoints[0]+","+P.data.getFirst().polygon.ypoints[0]+"]");
+			//System.out.println("["+P.data.getFirst().polygon.xpoints[0]+","+P.data.getFirst().polygon.ypoints[0]+"]");
+			P.rotation();
 
 			for ( ColoredPolygon CP :P.data) {
-				System.out.println(CP.polygon.xpoints[0]+","+CP.polygon.ypoints[0]);
-
+				System.out.println(CP.polygon.xpoints[0]/20+","+CP.polygon.ypoints[0]/20);
 			}
-			P.rotation();
 			P.visualize();
 
 			
